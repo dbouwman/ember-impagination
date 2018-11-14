@@ -1,7 +1,8 @@
-import Ember from 'ember';
+import { helper as buildHelper } from '@ember/component/helper';
+import { htmlSafe } from '@ember/template';
 
 export function colorBlock(color) {
-  return Ember.String.htmlSafe(`background-color: ${color}; width: 600px; height: 70px`);
+  return htmlSafe(`background-color: ${color}; width: 600px; height: 70px`);
 }
 
-export default Ember.Helper.helper(colorBlock);
+export default buildHelper(colorBlock);

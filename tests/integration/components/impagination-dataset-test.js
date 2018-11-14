@@ -6,7 +6,7 @@ import hbs from 'htmlbars-inline-precompile';
 import { Server } from '../../test-server';
 
 import sinon from 'sinon';
-import wait from 'ember-test-helpers/wait';
+import { settled } from '@ember/test-helpers';
 
 describe('Integration | Component | ImpaginationDataset', function() {
   setupComponentTest('impagination-dataset', {
@@ -69,7 +69,7 @@ describe('Integration | Component | ImpaginationDataset', function() {
         }}
         `);
 
-      return wait().then(() => done());
+      return settled().then(() => done());
     });
 
     it("requests pages from the server", function() {
@@ -109,7 +109,7 @@ describe('Integration | Component | ImpaginationDataset', function() {
     describe("resolving fetches", function() {
       beforeEach(function(done) {
         this.server.resolveAll();
-        wait().then(() => done());
+        settled().then(() => done());
       });
 
       it("yields a set of resolved records up to the loadHorizon", function() {
@@ -136,7 +136,7 @@ describe('Integration | Component | ImpaginationDataset', function() {
     describe("rejecting fetches", function() {
       beforeEach(function(done) {
         this.server.rejectAll();
-        wait().then(() => done());
+        settled().then(() => done());
       });
 
       it("yields empty rejected records up to the loadHorizon", function() {
@@ -173,7 +173,7 @@ describe('Integration | Component | ImpaginationDataset', function() {
         let model = spyCall.args[0];
 
         model.setReadOffset(10);
-        return wait().then(() => done());
+        return settled().then(() => done());
       });
 
       it("requests another page from the server", function() {
@@ -207,7 +207,7 @@ describe('Integration | Component | ImpaginationDataset', function() {
           unload-horizon=50
         }}
         `);
-      return wait().then(() => done());
+      return settled().then(() => done());
     });
 
     it("requests pages from the server", function() {
@@ -237,7 +237,7 @@ describe('Integration | Component | ImpaginationDataset', function() {
     describe("resolving fetches", function() {
       beforeEach(function(done) {
         this.server.resolveAll();
-        wait().then(() => done());
+        settled().then(() => done());
       });
 
       it("yields a set of filtered records up to the loadHorizon", function() {

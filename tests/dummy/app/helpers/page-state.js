@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { helper as buildHelper } from '@ember/component/helper';
 
 export function pageState(params) {
   let page = params[0];
@@ -13,4 +13,4 @@ export function pageState(params) {
   }
 }
 
-export default Ember.Helper.helper(pageState);
+export default buildHelper(pageState);
