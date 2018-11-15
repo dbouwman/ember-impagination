@@ -6,7 +6,7 @@ module.exports = {
   afterInstall: function() {
     return this.addAddonsToProject({
       packages: [
-        {name: 'ember-browserify', target: '^1.1.13'},
+        {name: 'ember-auto-import', target: '^1.2.15'},
       ]
     }).then(function() {
       return this.addPackagesToProject([
